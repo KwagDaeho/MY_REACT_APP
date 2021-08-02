@@ -1,6 +1,10 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-var num = 1;
-num = 2;
-function Daeho() { }
-exports.default = Daeho;
+exports.__esModule = true;
+var Kwag = /** @class */ (function () {
+    function Kwag() {
+        console.log("It is TSC.");
+    }
+    return Kwag;
+}());
+new Kwag();
+exports["default"] = Kwag;
