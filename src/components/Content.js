@@ -8,7 +8,7 @@ class Content extends Component {
         <br />
         {this.props.desc}
         <br />
-        Main contents here.
+        Main content here....
         <a href="1.html">linked!</a>
       </div>
     );
