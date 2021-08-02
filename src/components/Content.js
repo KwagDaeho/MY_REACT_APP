@@ -5,6 +5,9 @@ class Content extends Component {
     return (
       <div>
         {this.props.title}
+        <br />
+        {this.props.desc}
+        <br />
         Main contents here.
         <a href="1.html">linked!</a>
       </div>

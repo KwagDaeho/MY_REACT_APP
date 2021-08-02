@@ -8,7 +8,7 @@ class App extends Component {
     return (
       <div className="App">
         <Subject title="REACT" sub="Hello. This is REACT APP!!" />
-        <Content title="HTML" desc="" />
+        <Content title="HTML" desc="this is description." />
       </div>
     );
   }
