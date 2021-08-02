@@ -30,10 +30,28 @@ class App extends Component {
     }
     return (
       <div className="App">
-        <Subject
+        {/* <Subject
           title={this.state.subject.title}
           sub={this.state.subject.sub}
-        />
+        /> */}
+
+        <header>
+          <h1>
+            <a
+              href="/"
+              onClick={function (e) {
+                e.preventDefault();
+                // this.state.mode = "home"; event function에서는 this가 바인딩이 안된다 >> 윈도우 바인딩이겠지?
+                this.setState({
+                  mode: "read",
+                });
+              }.bind(this)}
+            >
+              {this.state.subject.title}
+            </a>
+          </h1>
+          <h2>{this.state.subject.sub}</h2>
+        </header>
         <ETC data={this.state.contents} />
         <Content title={_title} desc={_desc} />
       </div>
