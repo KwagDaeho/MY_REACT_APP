@@ -8,6 +8,8 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      mode: "home",
+      welcome: { title: "Welcome. i am Haraho :)", desc: "Hello! REACT!" },
       subject: { title: "REACT", sub: "Hello. This is REACT APP!!" },
       contents: [
         { id: 1, title: "HTML_1", desc: "this is description part1..." },
@@ -17,6 +19,15 @@ class App extends Component {
     };
   }
   render() {
+    var _title = null;
+    var _desc = null;
+    if (this.state.mode === "home") {
+      _title = this.state.welcome.title;
+      _desc = this.state.welcome.desc;
+    } else if (this.state.mode === "read") {
+      _title = this.state.contents[0].title;
+      _desc = this.state.contents[0].desc;
+    }
     return (
       <div className="App">
         <Subject
@@ -24,7 +35,7 @@ class App extends Component {
           sub={this.state.subject.sub}
         />
         <ETC data={this.state.contents} />
-        <Content title="HTML" desc="this is description." />
+        <Content title={_title} desc={_desc} />
       </div>
     );
   }
