@@ -9,7 +9,10 @@ class App extends Component {
     super(props);
     this.state = {
       mode: "home",
-      welcome: { title: "Welcome. i am Haraho :)", desc: "Hello! REACT!" },
+      welcome: {
+        title: "Welcome. i am Haraho :)",
+        desc: "Hello! REACT! This is HOME",
+      },
       subject: { title: "REACT", sub: "Hello. This is REACT APP!!" },
       contents: [
         { id: 1, title: "HTML_1", desc: "this is description part1..." },
@@ -30,21 +33,37 @@ class App extends Component {
     }
     return (
       <div className="App">
-        {/* <Subject
+        <Subject
           title={this.state.subject.title}
           sub={this.state.subject.sub}
-        /> */}
+          onChangePage={function () {
+            if (this.state.mode === "home") {
+              this.setState({
+                mode: "read",
+              });
+            } else {
+              this.setState({
+                mode: "home",
+              });
+            }
+          }.bind(this)}
+        />
 
-        <header>
+        {/* <header>
           <h1>
             <a
               href="/"
               onClick={function (e) {
                 e.preventDefault();
-                // this.state.mode = "home"; event function에서는 this가 바인딩이 안된다 >> 윈도우 바인딩이겠지?
-                this.setState({
-                  mode: "read",
-                });
+                if (this.state.mode === "home") {
+                  this.setState({
+                    mode: "read",
+                  });
+                } else {
+                  this.setState({
+                    mode: "home",
+                  });
+                }
               }.bind(this)}
             >
               {this.state.subject.title}
@@ -52,6 +71,7 @@ class App extends Component {
           </h1>
           <h2>{this.state.subject.sub}</h2>
         </header>
+         */}
         <ETC data={this.state.contents} />
         <Content title={_title} desc={_desc} />
       </div>

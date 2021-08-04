@@ -4,7 +4,14 @@ class Subject extends Component {
   render() {
     return (
       <header>
-        <h1>{this.props.title}</h1>
+        <h1
+          onClick={function (e) {
+            e.preventDefault();
+            this.props.onChangePage();
+          }.bind(this)}
+        >
+          {this.props.title}
+        </h1>
         <h2>{this.props.sub}</h2>
       </header>
     );
