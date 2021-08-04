@@ -14,8 +14,8 @@ class ETC extends Component {
             console.log(data);
           }.bind(this)}
         >
-          {data[i].id}(이)랑 {data[i].title} (이)라는 값이 나왔당께롱.{" "}
-          {data[i].desc} 요것도 같이 나왔당께롱.
+          {data[i].id}(이)랑 {data[i].title} (이)라는 값이 나왔당.{" "}
+          {data[i].desc} 요것도 같이 나왔어요.
         </p>
       );
       i = i + 1;

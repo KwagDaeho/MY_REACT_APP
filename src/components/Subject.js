@@ -12,7 +12,10 @@ class Subject extends Component {
         >
           {this.props.title}
         </h1>
-        <h2>{this.props.sub}</h2>
+        <h2>
+          {this.props.sub}
+          <br /> Think about function "bind(this)".
+        </h2>
       </header>
     );
   }

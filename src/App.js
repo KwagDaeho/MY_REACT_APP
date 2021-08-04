@@ -15,8 +15,12 @@ class App extends Component {
       },
       subject: { title: "REACT", sub: "Hello. This is REACT APP!!" },
       contents: [
-        { id: 1, title: "HTML_1", desc: "this is description part1..." },
-        { id: 2, title: "HTML_2", desc: "this is description part2..." },
+        { id: 1, title: "HTML_1", desc: "this is part1.. props is read-only." },
+        {
+          id: 2,
+          title: "HTML_2",
+          desc: "this is part2.. state can change by using setState.",
+        },
         { id: 3, title: "HTML_3", desc: "this is description part3..." },
       ],
     };
