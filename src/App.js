@@ -72,7 +72,12 @@ class App extends Component {
           <h2>{this.state.subject.sub}</h2>
         </header>
          */}
-        <ETC data={this.state.contents} />
+        <ETC
+          clickFunction={function () {
+            alert("You clicked ETC part!");
+          }}
+          data={this.state.contents}
+        />
         <Content title={_title} desc={_desc} />
       </div>
     );

@@ -15,7 +15,15 @@ class ETC extends Component {
       i = i + 1;
     }
 
-    return <div>{lists}</div>;
+    return (
+      <div
+        onClick={function () {
+          this.props.clickFunction();
+        }.bind(this)}
+      >
+        {lists}
+      </div>
+    );
   }
 }
 
