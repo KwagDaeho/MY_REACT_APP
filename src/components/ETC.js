@@ -7,7 +7,13 @@ class ETC extends Component {
     var i = 0;
     while (i < data.length) {
       lists.push(
-        <p key={data[i].id}>
+        <p
+          key={data[i].id}
+          onClick={function () {
+            this.props.clickFunction();
+            console.log(data);
+          }.bind(this)}
+        >
           {data[i].id}(이)랑 {data[i].title} (이)라는 값이 나왔당께롱.{" "}
           {data[i].desc} 요것도 같이 나왔당께롱.
         </p>
@@ -15,15 +21,7 @@ class ETC extends Component {
       i = i + 1;
     }
 
-    return (
-      <div
-        onClick={function () {
-          this.props.clickFunction();
-        }.bind(this)}
-      >
-        {lists}
-      </div>
-    );
+    return <div>{lists}</div>;
   }
 }
 
