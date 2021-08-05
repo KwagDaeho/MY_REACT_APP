@@ -15,6 +15,7 @@ class App extends Component {
         desc: "Hello! REACT! This is HOME",
       },
       subject: { title: "REACT", sub: "Hello. This is REACT APP!!" },
+      selected_id: 1,
       contents: [
         { id: 1, title: "HTML_1", desc: "this is part1.. props is read-only." },
         {
@@ -33,8 +34,16 @@ class App extends Component {
       _title = this.state.welcome.title;
       _desc = this.state.welcome.desc;
     } else if (this.state.mode === "read") {
-      _title = this.state.contents[0].title;
-      _desc = this.state.contents[0].desc;
+      var i = 0;
+      while (i < this.state.contents.length) {
+        var data = this.state.contents[i];
+        if (data.id === this.state.selected_id) {
+          _title = data.title;
+          _desc = data.desc;
+          break;
+        }
+        i = i + 1;
+      }
     }
     return (
       <div className="App">
@@ -78,9 +87,10 @@ class App extends Component {
         </header>
          */}
         <ETC
-          clickFunction={function () {
-            alert("You clicked ETC part!");
-          }}
+          changeContent={function (id) {
+            console.log("11");
+            this.setState({ mode: "read", selected_id: Number(id) });
+          }.bind(this)} /* .bind()함수에 대해 더 잘 알아보자... */
           data={this.state.contents}
         />
         <Content title={_title} desc={_desc} />

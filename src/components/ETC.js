@@ -8,14 +8,17 @@ class ETC extends Component {
     while (i < data.length) {
       lists.push(
         <p
+          data-id={
+            data[i].id
+          } /* data- >> dataset 이라는 특수한 것을 통해 접근할 수 있다. */
           key={data[i].id}
-          onClick={function () {
-            this.props.clickFunction();
-            console.log(data);
+          onClick={function (e) {
+            this.props.changeContent(e.target.dataset.id);
           }.bind(this)}
         >
-          {data[i].id}(이)랑 {data[i].title} (이)라는 값이 나왔당.{" "}
-          {data[i].desc} 요것도 같이 나왔어요.
+          {data[i].id}번 입니다. TITLE은 {data[i].title} 입니다.
+          <br />
+          {data[i].desc} 요건 설명이에요. 클릭해보세요.
         </p>
       );
       i = i + 1;
