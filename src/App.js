@@ -3,6 +3,7 @@ import "./App.css";
 import Content from "./components/Content.js";
 import Subject from "./components/Subject.js";
 import ETC from "./components/ETC";
+import Kwag from "./daeho.js";
 
 class App extends Component {
   constructor(props) {
@@ -83,6 +84,7 @@ class App extends Component {
           data={this.state.contents}
         />
         <Content title={_title} desc={_desc} />
+        <Kwag />
       </div>
     );
   }
