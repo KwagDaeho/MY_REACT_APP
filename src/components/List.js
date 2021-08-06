@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-class ETC extends Component {
+class List extends Component {
   render() {
     var lists = [];
     var data = this.props.data;
@@ -16,9 +16,7 @@ class ETC extends Component {
             this.props.changeContent(e.target.dataset.id);
           }.bind(this)}
         >
-          {data[i].id}번 입니다. TITLE은 {data[i].title} 입니다.
-          <br />
-          클릭해보세요.
+          Content.{data[i].id} || TITLE : {data[i].title}
         </p>
       );
       i = i + 1;
@@ -28,4 +26,4 @@ class ETC extends Component {
   }
 }
 
-export default ETC;
+export default List;

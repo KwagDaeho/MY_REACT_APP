@@ -2,8 +2,9 @@ import React, { Component } from "react";
 import "./App.css";
 import Content from "./components/Content.js";
 import Subject from "./components/Subject.js";
-import ETC from "./components/ETC";
+import List from "./components/List";
 import Kwag from "./daeho.js";
+import Controls from "./components/Controls";
 
 class App extends Component {
   constructor(props) {
@@ -87,12 +88,13 @@ class App extends Component {
           <h2>{this.state.subject.sub}</h2>
         </header>
          */}
-        <ETC
+        <List
           changeContent={function (id) {
             this.setState({ mode: "read", selected_id: Number(id) });
           }.bind(this)} /* .bind()함수에 대해 더 잘 알아보자... */
           data={this.state.contents}
         />
+        <Controls />
         <Content title={_title} desc={_desc} />
         <Kwag />
       </div>

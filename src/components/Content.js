@@ -3,11 +3,12 @@ import React, { Component } from "react";
 class Content extends Component {
   render() {
     return (
-      <div>
+      <div className="main_content">
+        <h1>[ MAIN CONTENT ]</h1>
         <h1>{this.props.title}</h1>
         <h2>{this.props.desc}</h2>
         Main content here....
-        <a href="1.html">Don't CLICK!</a>
+        <a href="1.html">DON'T CLICK THIS!</a>
       </div>
     );
   }
