@@ -18,7 +18,7 @@ class ETC extends Component {
         >
           {data[i].id}번 입니다. TITLE은 {data[i].title} 입니다.
           <br />
-          {data[i].desc} 요건 설명이에요. 클릭해보세요.
+          클릭해보세요.
         </p>
       );
       i = i + 1;

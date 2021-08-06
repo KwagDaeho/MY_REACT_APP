@@ -7,7 +7,7 @@ class Content extends Component {
         <h1>{this.props.title}</h1>
         <h2>{this.props.desc}</h2>
         Main content here....
-        <a href="1.html">NOT linked!</a>
+        <a href="1.html">Don't CLICK!</a>
       </div>
     );
   }

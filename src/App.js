@@ -23,7 +23,11 @@ class App extends Component {
           title: "HTML_2",
           desc: "this is part2.. state can change by using setState.",
         },
-        { id: 3, title: "HTML_3", desc: "this is description part3..." },
+        {
+          id: 3,
+          title: "HTML_3",
+          desc: "this is description part3.. THINK ABOUT NEW TECH ALWAYS",
+        },
       ],
     };
   }
@@ -51,11 +55,8 @@ class App extends Component {
           title={this.state.subject.title}
           sub={this.state.subject.sub}
           onChangePage={function () {
-            if (this.state.mode === "home") {
-              this.setState({
-                mode: "read",
-              });
-            } else {
+            if (this.state.mode === "read") {
+              alert("GO TO HOME!");
               this.setState({
                 mode: "home",
               });
@@ -88,7 +89,6 @@ class App extends Component {
          */}
         <ETC
           changeContent={function (id) {
-            console.log("11");
             this.setState({ mode: "read", selected_id: Number(id) });
           }.bind(this)} /* .bind()함수에 대해 더 잘 알아보자... */
           data={this.state.contents}

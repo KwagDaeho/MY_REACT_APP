@@ -10,7 +10,9 @@ class Subject extends Component {
             this.props.onChangePage();
           }.bind(this)}
         >
-          {this.props.title}
+          <span>{this.props.title}</span>
+          <br />
+          This is home button.
         </h1>
         <h2>
           {this.props.sub}

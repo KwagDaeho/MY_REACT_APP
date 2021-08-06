@@ -1,6 +1,9 @@
 .App {
   text-align: center;
 }
+h1 > span {
+  font-size: 3em;
+}
 
 .App-logo {
   height: 40vmin;
