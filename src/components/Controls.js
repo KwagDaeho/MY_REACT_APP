@@ -6,13 +6,34 @@ class Controls extends Component {
       <h2>
         <ol>
           <li>
-            <button className="btn_create">create</button>
+            <button
+              className="btn_create"
+              onClick={function (e) {
+                this.props.onChangeMode("createMode");
+              }.bind(this)}
+            >
+              create
+            </button>
           </li>
           <li>
-            <button className="btn_update">update</button>
+            <button
+              className="btn_update"
+              onClick={function (e) {
+                this.props.onChangeMode("updateMode");
+              }.bind(this)}
+            >
+              update
+            </button>
           </li>
           <li>
-            <button className="btn_delete">delete</button>
+            <button
+              className="btn_delete"
+              onClick={function (e) {
+                this.props.onChangeMode("deleteMode");
+              }.bind(this)}
+            >
+              delete
+            </button>
           </li>
         </ol>
       </h2>

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
-import Content from "./components/Content.js";
+import ReadContent from "./components/ReadContent.js";
+import CreateContent from "./components/CreateContent";
 import Subject from "./components/Subject.js";
 import List from "./components/List";
 import Kwag from "./daeho.js";
@@ -35,9 +36,11 @@ class App extends Component {
   render() {
     var _title = null;
     var _desc = null;
+    var _mainContent = null;
     if (this.state.mode === "home") {
       _title = this.state.welcome.title;
       _desc = this.state.welcome.desc;
+      _mainContent = <ReadContent title={_title} desc={_desc} />;
     } else if (this.state.mode === "read") {
       var i = 0;
       while (i < this.state.contents.length) {
@@ -49,6 +52,15 @@ class App extends Component {
         }
         i = i + 1;
       }
+      _mainContent = <ReadContent title={_title} desc={_desc} />;
+    } else if (this.state.mode === "createMode") {
+      _mainContent = (
+        <CreateContent
+          onSubmit={function (_title, _desc) {
+            console.log(_title, _desc);
+          }.bind(this)}
+        />
+      );
     }
     return (
       <div className="App">
@@ -94,8 +106,14 @@ class App extends Component {
           }.bind(this)} /* .bind()함수에 대해 더 잘 알아보자... */
           data={this.state.contents}
         />
-        <Controls />
-        <Content title={_title} desc={_desc} />
+        <Controls
+          onChangeMode={function (_mode) {
+            this.setState({
+              mode: _mode,
+            });
+          }.bind(this)}
+        />
+        {_mainContent}
         <Kwag />
       </div>
     );
