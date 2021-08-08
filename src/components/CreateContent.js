@@ -2,10 +2,11 @@ import React, { Component } from "react";
 
 class CreateContent extends Component {
   render() {
+    console.log("CreateContent Render.");
     return (
       <div className="main_content">
         <h1>[ MAIN CONTENT ]</h1>
-        <h1>Create</h1>
+        <h1>Create Mode</h1>
         <form
           action="/create_process"
           method="post"

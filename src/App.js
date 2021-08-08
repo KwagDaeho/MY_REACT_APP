@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import ReadContent from "./components/ReadContent.js";
 import CreateContent from "./components/CreateContent";
+import UpdateContent from "./components/UpdateContent";
 import Subject from "./components/Subject.js";
 import List from "./components/List";
 import Kwag from "./daeho.js";
@@ -10,7 +11,7 @@ import Controls from "./components/Controls";
 class App extends Component {
   constructor(props) {
     super(props);
-    this.now_content_number = 3;
+    this.all_content_number = 3;
     this.state = {
       mode: "home",
       welcome: {
@@ -34,9 +35,10 @@ class App extends Component {
       ],
     };
   }
-  render() {
+  getContent() {
     var _title = null;
     var _desc = null;
+    var _id = null;
     var _mainContent = null;
     if (this.state.mode === "home") {
       _title = this.state.welcome.title;
@@ -58,14 +60,15 @@ class App extends Component {
       _mainContent = (
         <CreateContent
           onSubmit={function (_title, _desc) {
-            this.now_content_number = this.now_content_number + 1;
             // this.state.contents.push({
-            //   id: this.now_content_number,
+            //   id: this.all_content_number,
             //   title: _title,
             //   desc: _desc,
             // }); 이 방법은 state 데이터의 원본을 훼손시키므로 push가 아닌 concat을 사용하자.
+            // immutable의 중요성을 생각해라. 불-변-
+            this.all_content_number = this.all_content_number + 1;
             var created_content = this.state.contents.concat({
-              id: this.now_content_number,
+              id: this.all_content_number,
               title: _title,
               desc: _desc,
             });
@@ -76,7 +79,48 @@ class App extends Component {
           }.bind(this)}
         />
       );
+    } else if (this.state.mode === "updateMode") {
+      var i = 0;
+      while (i < this.state.contents.length) {
+        var data = this.state.contents[i];
+        if (data.id === this.state.selected_id) {
+          _title = data.title;
+          _desc = data.desc;
+          _id = data.id;
+          break;
+        }
+        i = i + 1;
+      }
+      _mainContent = (
+        <UpdateContent
+          id={_id}
+          title={_title}
+          desc={_desc}
+          onSubmit={function (_id, _title, _desc) {
+            var updated_content = Array.from(this.state.contents);
+            var j = 0;
+            while (j < updated_content.length) {
+              if (updated_content[j].id === _id) {
+                updated_content[j] = { id: _id, title: _title, desc: _desc };
+                break;
+              }
+              j = j + 1;
+            }
+
+            this.setState({
+              contents: updated_content,
+            });
+            console.log(_title, _desc);
+          }.bind(this)}
+        />
+      );
     }
+    return _mainContent;
+  }
+
+  render() {
+    console.log("App Render.");
+
     return (
       <div className="App">
         <Subject
@@ -91,7 +135,6 @@ class App extends Component {
             }
           }.bind(this)}
         />
-
         {/* <header>
           <h1>
             <a
@@ -128,8 +171,9 @@ class App extends Component {
             });
           }.bind(this)}
         />
-        {_mainContent}
+        {this.getContent()};
         <Kwag />
+        {console.log("===========================")}
       </div>
     );
   }

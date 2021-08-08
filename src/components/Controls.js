@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 class Controls extends Component {
   render() {
+    console.log("Controls Render.");
     return (
       <h2>
         <ol>
