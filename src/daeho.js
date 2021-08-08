@@ -6,7 +6,7 @@ class Kwag extends Component {
     console.log("===========================");
     return (
       <div>
-        <h1>I am Kwag.</h1>
+        <h1>Kwag, Dae-ho.</h1>
       </div>
     );
   }

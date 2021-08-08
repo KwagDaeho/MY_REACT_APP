@@ -29,6 +29,7 @@ class Controls extends Component {
           <li>
             <button
               className="btn_delete"
+              value="delete"
               onClick={function (e) {
                 this.props.onChangeMode("deleteMode");
               }.bind(this)}

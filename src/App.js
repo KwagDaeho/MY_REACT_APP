@@ -148,6 +148,35 @@ class App extends Component {
         />
         <Controls
           onChangeMode={function (_mode) {
+            if (_mode === "deleteMode") {
+              if (window.confirm("you want delete selected content?")) {
+                var deletedContents = Array.from(this.state.contents);
+                var i = 0;
+                while (i < this.state.contents.length) {
+                  if (deletedContents[i].id === this.state.selected_id) {
+                    deletedContents.splice(i, 1);
+                    /* 원본을 바꾸지 않고, 복제본을 만들어서 바꾸자! */
+                    break;
+                  }
+                  i = i + 1;
+                }
+                this.setState({
+                  contents: deletedContents,
+                  mode: "home",
+                  selected_id: 1,
+                });
+                alert(
+                  "Your delete request has been approved. You deleted [ TITLE: " +
+                    this.state.contents[this.state.selected_id].title +
+                    "] Content "
+                );
+              }
+            } else {
+              this.setState({
+                mode: _mode,
+              });
+            }
+
             this.setState({
               mode: _mode,
             });
