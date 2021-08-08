@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 class ReadContent extends Component {
   render() {
-    console.log("ReadContent Render.");
+    console.log("ReadContent [ ID: " + this.props.id + " ] Render.");
     return (
       <div className="main_content">
         <h1>[ MAIN CONTENT ]</h1>

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 class List extends Component {
   shouldComponentUpdate(newProps, newState) {
-    console.log("shouldComponentUpdata!!");
+    console.log("[ Check List ]");
     if (newProps.data !== this.props.data) {
       return true;
     } else {

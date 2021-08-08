@@ -51,11 +51,12 @@ class App extends Component {
         if (data.id === this.state.selected_id) {
           _title = data.title;
           _desc = data.desc;
+          _id = data.id;
           break;
         }
         i = i + 1;
       }
-      _mainContent = <ReadContent title={_title} desc={_desc} />;
+      _mainContent = <ReadContent title={_title} desc={_desc} id={_id} />;
     } else if (this.state.mode === "createMode") {
       _mainContent = (
         <CreateContent
@@ -74,6 +75,8 @@ class App extends Component {
             });
             this.setState({
               contents: created_content,
+              mode: "read",
+              selected_id: this.all_content_number,
             });
             console.log(_title, _desc);
           }.bind(this)}
@@ -109,6 +112,8 @@ class App extends Component {
 
             this.setState({
               contents: updated_content,
+              mode: "read",
+              selected_id: _id,
             });
             console.log(_title, _desc);
           }.bind(this)}
@@ -135,29 +140,6 @@ class App extends Component {
             }
           }.bind(this)}
         />
-        {/* <header>
-          <h1>
-            <a
-              href="/"
-              onClick={function (e) {
-                e.preventDefault();
-                if (this.state.mode === "home") {
-                  this.setState({
-                    mode: "read",
-                  });
-                } else {
-                  this.setState({
-                    mode: "home",
-                  });
-                }
-              }.bind(this)}
-            >
-              {this.state.subject.title}
-            </a>
-          </h1>
-          <h2>{this.state.subject.sub}</h2>
-        </header>
-         */}
         <List
           changeContent={function (id) {
             this.setState({ mode: "read", selected_id: Number(id) });
@@ -171,9 +153,8 @@ class App extends Component {
             });
           }.bind(this)}
         />
-        {this.getContent()};
+        {this.getContent()}
         <Kwag />
-        {console.log("===========================")}
       </div>
     );
   }
