@@ -1,7 +1,16 @@
 import React, { Component } from "react";
 
 class List extends Component {
+  shouldComponentUpdate(newProps, newState) {
+    console.log("shouldComponentUpdata!!");
+    if (newProps.data !== this.props.data) {
+      return true;
+    } else {
+      return false;
+    }
+  }
   render() {
+    console.log("List render.");
     var lists = [];
     var data = this.props.data;
     var i = 0;

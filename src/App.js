@@ -10,6 +10,7 @@ import Controls from "./components/Controls";
 class App extends Component {
   constructor(props) {
     super(props);
+    this.now_content_number = 3;
     this.state = {
       mode: "home",
       welcome: {
@@ -57,6 +58,20 @@ class App extends Component {
       _mainContent = (
         <CreateContent
           onSubmit={function (_title, _desc) {
+            this.now_content_number = this.now_content_number + 1;
+            // this.state.contents.push({
+            //   id: this.now_content_number,
+            //   title: _title,
+            //   desc: _desc,
+            // }); 이 방법은 state 데이터의 원본을 훼손시키므로 push가 아닌 concat을 사용하자.
+            var created_content = this.state.contents.concat({
+              id: this.now_content_number,
+              title: _title,
+              desc: _desc,
+            });
+            this.setState({
+              contents: created_content,
+            });
             console.log(_title, _desc);
           }.bind(this)}
         />
@@ -68,7 +83,7 @@ class App extends Component {
           title={this.state.subject.title}
           sub={this.state.subject.sub}
           onChangePage={function () {
-            if (this.state.mode === "read") {
+            if (this.state.mode !== "home") {
               alert("GO TO HOME!");
               this.setState({
                 mode: "home",
