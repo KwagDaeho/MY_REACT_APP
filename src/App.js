@@ -154,22 +154,23 @@ class App extends Component {
                 var i = 0;
                 while (i < this.state.contents.length) {
                   if (deletedContents[i].id === this.state.selected_id) {
-                    deletedContents.splice(i, 1);
+                    deletedContents.splice(i, i + 1);
                     /* 원본을 바꾸지 않고, 복제본을 만들어서 바꾸자! */
                     break;
                   }
                   i = i + 1;
                 }
+                var deletedId = this.state.selected_id - 1;
+                alert(
+                  "Request has been approved. Delete [ TITLE : " +
+                    this.state.contents[deletedId].title +
+                    "] Content "
+                );
                 this.setState({
                   contents: deletedContents,
                   mode: "home",
                   selected_id: 1,
                 });
-                alert(
-                  "Your delete request has been approved. You deleted [ TITLE: " +
-                    this.state.contents[this.state.selected_id].title +
-                    "] Content "
-                );
               }
             } else {
               this.setState({

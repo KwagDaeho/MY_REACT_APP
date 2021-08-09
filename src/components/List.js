@@ -25,7 +25,7 @@ class List extends Component {
             this.props.changeContent(e.target.dataset.id);
           }.bind(this)}
         >
-          Content.{data[i].id} || TITLE : {data[i].title}
+          Content No.{data[i].id} <span>[ TITLE : {data[i].title} ] </span>
         </p>
       );
       i = i + 1;
