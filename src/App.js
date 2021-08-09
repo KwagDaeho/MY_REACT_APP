@@ -40,6 +40,7 @@ class App extends Component {
     var _desc = null;
     var _id = null;
     var _mainContent = null;
+    var data = null;
     if (this.state.mode === "home") {
       _title = this.state.welcome.title;
       _desc = this.state.welcome.desc;
@@ -47,7 +48,7 @@ class App extends Component {
     } else if (this.state.mode === "read") {
       var i = 0;
       while (i < this.state.contents.length) {
-        var data = this.state.contents[i];
+        data = this.state.contents[i];
         if (data.id === this.state.selected_id) {
           _title = data.title;
           _desc = data.desc;
@@ -83,16 +84,17 @@ class App extends Component {
         />
       );
     } else if (this.state.mode === "updateMode") {
-      var i = 0;
-      while (i < this.state.contents.length) {
-        var data = this.state.contents[i];
-        if (data.id === this.state.selected_id) {
-          _title = data.title;
-          _desc = data.desc;
-          _id = data.id;
+      var k = 0;
+      var updateData = null;
+      while (k < this.state.contents.length) {
+        updateData = this.state.contents[k];
+        if (updateData.id === this.state.selected_id) {
+          _title = updateData.title;
+          _desc = updateData.desc;
+          _id = updateData.id;
           break;
         }
-        i = i + 1;
+        k = k + 1;
       }
       _mainContent = (
         <UpdateContent

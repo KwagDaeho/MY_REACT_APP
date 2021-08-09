@@ -12,6 +12,7 @@ class UpdateContent extends Component {
 
   render() {
     console.log("UpdateContent Render.");
+    console.log(this.props.title, this.state.id);
     return (
       <div className="main_content">
         <h1>[ MAIN CONTENT ]</h1>

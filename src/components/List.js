@@ -22,10 +22,11 @@ class List extends Component {
           } /* data- >> dataset 이라는 특수한 것을 통해 접근할 수 있다. */
           key={data[i].id}
           onClick={function (e) {
+            console.log(e.target.dataset);
             this.props.changeContent(e.target.dataset.id);
           }.bind(this)}
         >
-          Content No.{data[i].id} <span>[ TITLE : {data[i].title} ] </span>
+          Content No.{data[i].id} [ TITLE : {data[i].title} ]
         </p>
       );
       i = i + 1;
